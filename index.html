@@ -8,11 +8,13 @@
         body {
             font-family: Arial, sans-serif;
             text-align: center;
-            background-color: #f4f4f4;
+            background: url('image.jpg') no-repeat center center fixed;
+            background-size: cover;
             padding: 50px;
+            color: #333;
         }
         .container {
-            background: white;
+            background: rgba(255, 255, 255, 0.9);
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
@@ -31,14 +33,25 @@
             margin-top: 10px;
             color: #ff4500;
         }
+        .tips {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            display: inline-block;
+        }
     </style>
 </head>
-<body>
+<body onclick="showRandomTip()">
 <div class="container">
     <h1>網站暫時無法使用</h1>
     <p>我們正在努力修復中，請稍候...</p>
     <div class="loading-icon">⏳</div>
     <p class="countdown">預計 <span id="timer">30</span> 秒後請再試一次。</p>
+    <div class="tips" id="tips-box">📌 點擊畫面獲取 IELTS Tips</div>
 </div>
 
 <script>
@@ -53,6 +66,35 @@
         }
     }
     setInterval(updateTimer, 1000);
+
+    // IELTS Tips 清單
+    const tipsList = [
+        "📌 雅思總分是四個部分的平均值，四捨五入到 0.5。",
+        "📌 聽力與閱讀的分數取決於答對的題數，9 分大約要答對 39-40 題。",
+        "📌 學術類與一般訓練類的閱讀難度不同，計分標準也不同。",
+        "📌 寫作 Task 1 需要描述圖表或寫書信，Task 2 至少 250 字，觀點要清晰。",
+        "📌 口說 Part 1 問日常話題，Part 2 是兩分鐘獨白，Part 3 需要深入討論。",
+        "📌 口說時流暢度比用難單字更重要，避免長時間停頓。",
+        "📌 連貫性是寫作和口說的重點，要善用連接詞。",
+        "📌 句型多樣性加分，但錯誤過多會扣分，準確性更重要。",
+        "📌 閱讀時抓關鍵字，不要逐字細讀，學會略讀與掃讀。",
+        "📌 聽力考試時要先讀題目，預測可能的答案。",
+        "📌 口說別死背答案，考官重視自然對話。",
+        "📌 寫作要善用同義詞，避免重複用字。",
+        "📌 錄音自己的口說練習，找出需要改進的地方。",
+        "📌 練習時計時寫作，培養考試時間感。",
+        "📌 聽力與閱讀的拼寫錯誤算錯，要特別注意單字拼法。",
+        "📌 口說時發音清晰比刻意模仿口音更重要。",
+        "📌 遇到不會的口說題，可以先重複問題爭取思考時間。",
+        "📌 Task 2 寫作結構清楚最重要，開頭、主體、結尾要分明。",
+        "📌 閱讀選擇題常有干擾選項，答案不一定用相同的字眼出現。",
+        "📌 寫作避免過度使用模板句，考官喜歡自然表達。"
+    ];
+
+    function showRandomTip() {
+        const randomIndex = Math.floor(Math.random() * tipsList.length);
+        document.getElementById('tips-box').textContent = tipsList[randomIndex];
+    }
 </script>
 </body>
 </html>
